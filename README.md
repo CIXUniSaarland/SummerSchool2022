@@ -9,10 +9,11 @@ For the first time this year, on the last day, attendants will get the chance to
 Themes & Topics
 We have put together a remarkable program that features the leading experts in the area of computational interaction. Each day is dedicated to a specific topic and will be divided into theoretical background lectures and practical hands-on exercises. For each topic there will be extensive opportunities to practice the acquired knowledge and to get feedback from the instructors. 
 
-See [here](https://cixschool2022.cs.uni-saarland.de/speakers/) for more details.
+See [here](https://cixschool2022.cs.uni-saarland.de/speakers/) for more details on your sessions and instructors.
 
 Your hosts are -- 
 [Anna Maria Feit, Computational Interaction Group](https://cix.cs.uni-saarland.de/)
+and
 [Jürgen Steimle, Human Computer Interaction Group](https://hci.cs.uni-saarland.de/)
 
 More Details at -- 
