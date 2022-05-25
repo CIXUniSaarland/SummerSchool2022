@@ -13,7 +13,7 @@ See [here](https://cixschool2022.cs.uni-saarland.de/speakers/) for more details.
 
 Your hosts are -- 
 [Anna Maria Feit, Computational Interaction Group](https://cix.cs.uni-saarland.de/)
-J[ürgen Steimle, Human Computer Interaction Group](https://hci.cs.uni-saarland.de/)
+[Jürgen Steimle, Human Computer Interaction Group](https://hci.cs.uni-saarland.de/)
 
 More Details at -- 
 https://cixschool2022.cs.uni-saarland.de/
