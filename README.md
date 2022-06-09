@@ -5,12 +5,12 @@ This git repository accompanies the 6th Summer School on Computational Interacti
 It contains all material for teaching HCI students, researchers, and industry professionals computational methods and their applications in user interface design, interactive systems, user modeling, and more. Each day featured one or two outstanding researchers who shared their expertise on a technical topic and advice attendants in practical hands-on sessions — always in relevance to HCI.
 
 The topics and speakers are as follows: 
-- Bayesian Inference by John Williamson
-- Deep Learning by Luis Leiva and Bereket Yilma
-- Computational Rationality by Andrew Howes
-- Interactive and Explainable AI by Nikolai Banovic
-- Bayesian Optimization by Antti Oulasvirta
-- Geometric Optimization by Alexandra Ion
+- Bayesian Inference by [John Williamson](https://www.johnhw.com/)
+- Deep Learning by [Luis Leiva](https://luis.leiva.name/) and [Bereket Yilma](https://bekyilma.github.io/)
+- Computational Rationality by [Andrew Howes](https://www.cs.bham.ac.uk/~howesa/)
+- Interactive and Explainable AI by [Nikolai Banovic](http://www.nikolabanovic.net/)
+- Bayesian Optimization by [Antti Oulasvirta](https://userinterfaces.aalto.fi/)
+- Geometric Optimization by [Alexandra Ion](https://interactive-structures.org/)
 
 
 The school was organized by 
