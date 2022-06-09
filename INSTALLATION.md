@@ -9,7 +9,7 @@ This document informs you on how to run the Jupyter Notebooks within this reposi
 Run the following steps from the terminal/shell.
 
 2. Install Jupyter Notebook globally. This way, we will install Jupyter only once and can use it across all environments: `conda install jupyter`
-3. Clone this repository somewhere on your computer: `git clone git@github.com:CIXUniSaarland/SummerSchool2022.git`. Then, change directory into SummerSchool2022: `cd SummerSchool2022`
+3. Clone this repository somewhere on your computer: `git clone https://github.com/CIXUniSaarland/SummerSchool2022.git`. Then, change directory into SummerSchool2022: `cd SummerSchool2022`
 5. Create a conda environment for each session. For *session1* the command to do so would look like: `conda create -n session1 python=3.8`. You have to create six environments in total.
 6.To activate an environment, run the command as follows (replace *session1* with any session environment you have already created): `conda activate session1`.
 7. Change the directory to fit the session, e.g. for session1: `cd "Day 1 - Bayesian Inference"`
