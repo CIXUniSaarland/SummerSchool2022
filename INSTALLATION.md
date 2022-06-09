@@ -12,7 +12,7 @@ Run the following steps from the terminal/shell.
 3. Clone this repository somewhere on your computer: `git clone git@github.com:CIXUniSaarland/SummerSchool2022.git`. Then, change directory into SummerSchool2022: `cd SummerSchool2022`
 5. Create a conda environment for each session. For *session1* the command to do so would look like: `conda create -n session1 python=3.8`. You have to create six environments in total.
 6.To activate an environment, run the command as follows (replace *session1* with any session environment you have already created): `conda activate session1`.
-7. Change the directory to fit the session, e.g. for session1: `cd "Bayesian Inference"`
+7. Change the directory to fit the session, e.g. for session1: `cd "Day 1 - Bayesian Inference"`
 8. Install the requirements for the session (those packages will only be available within the currently activated environment): `pip install -r requirements.txt`
 9. Add environment (here *session1*) as a kernel to Jupyter Notebook: `python -m ipykernel install --user --name=session1`
 10. Deactivate environment after installing the requirements: `conda deactivate`
