@@ -1,0 +1,6 @@
+numpy
+scipy
+matplotlib
+GPy
+GPyOpt
+botorch
