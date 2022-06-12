@@ -1,0 +1,1 @@
+jt -T -nfs 14 -ofs 14 -tfs 14 -fs 12 -cellw 80%

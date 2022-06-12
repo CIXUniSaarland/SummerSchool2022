@@ -12,7 +12,7 @@ I recommend having [Anaconda]() pre-installed. To create a clean environment for
 
 * `conda create -n cix_2022_jhw`
 * `conda activate cix_2022_jhw`
-* `conda install ipykernel`
+* `conda install jupyter matplotlib numpy scipy seaborn pandas ipykernel`
 * `pip install -r requirements.txt`
 * `jupyter notebook`
 
