@@ -25,13 +25,14 @@ def optimal_temps(meat):
 
 
 def expectation_cookedness(temps, meat):
-    return np.mean([meat_utility(t) for t in temps])
+    mn, mx, density = meat_temps[meat]
+    return np.mean([meat_utility(t, mn, mx) for t in temps])
     
 from threading import Thread, Event, Lock 
 import time 
 
-def create_game_ui():    
-    game = CookingGame()
+def create_game_ui(k):    
+    game = CookingGame(k=k)
     cook_30 = Button(description="Cook 30")
     cook_30.on_click(lambda x: game.cook(30))
     cook_10 = Button(description="Cook 10")
@@ -40,10 +41,6 @@ def create_game_ui():
     cook_5.on_click(lambda x: game.cook(5))
     cook_1 = Button(description="Cook 1")
     cook_1.on_click(lambda x: game.cook(1))
-    insert = Button(description="In")
-    insert.on_click(lambda x: game.insert(1))
-    remove = Button(description="Out")
-    remove.on_click(lambda x: game.insert(-1))
     serve = Button(description="Serve food!")
     serve.on_click(lambda x:game.serve())
     title_label = Label(value="You are cooking "+game.describe_food())
@@ -55,31 +52,49 @@ def create_game_ui():
 
     game.therm_label = therm_label
 
-    controls = HBox([cook_30, cook_10, cook_5, cook_1, insert, remove, serve])
+    controls = HBox([cook_30, cook_10, cook_5, cook_1,  serve])
     panel = VBox([title_label, temp_label, therm_label, controls, out])
     display(panel)
 
-class CookingGame:
-    def __init__(self):
-        self.therm_label = None
 
+
+class CookingGame:
+    def __init__(self, k):
+        self.therm_label = None
+        self.k = k # thermometer smoothing
         self.chilled = random.choice(["room temperature", "chilled", "frozen"])        
         self.init_temp = init_temps[self.chilled]
-        self.radius = random.uniform(2.5, 7.0)**2
+        self.radius = random.uniform(2.5, 5.5)**2
         self.density = 0.9
-        self.heat_capacity = 0.01
+        self.heat_capacity = 0.1
         self.oven_temp = np.random.randint(0, 5) * 10 + 150
         self.meat = random.choice(list(meat_temps.keys()))
         self.mass = get_mass(self.radius, self.density)
-        self.density *= meat_temps[self.meat][2]
+        self.density = 1.0
         self.cooking_time = 0
         self.thermometer_time = 0
         self.thermometer_temp = 20
-        self.thermometer_insert = 0
+        self.total_moves = 0
+        self.room_temp = 20
+        self.total_thermometer_time = 0
+        
+        self.thermometer_insert = np.random.uniform(self.radius/4, 3*self.radius/4)
         self.stopping = False
+        self.score = 0
         self.out = None
         Thread(target=self.update_loop).start()
 
+    def score_food(self):
+        """Return the total thermometer time, the total number of moves,
+        and the cookedness score"""
+        distances = np.linspace(0, self.radius, 100)
+        temps = food_model(self.radius, distances, self.init_temp, self.oven_temp, self.cooking_time, self.density, self.heat_capacity)
+        goodness = expectation_cookedness(temps, self.meat)
+        mn, mx, density = meat_temps[self.meat]
+        over = np.max(temps-mx)
+        under = np.min(temps-mn) 
+        frozen = np.any(temps<0)
+        return goodness, self.total_thermometer_time,  over, under, frozen
 
     def describe_temp(self):
         under, best, over = optimal_temps(self.meat)
@@ -96,54 +111,63 @@ class CookingGame:
     def cook(self, minutes):
         self.thermometer_time = 0
         self.thermometer_temp = 20
-        self.thermometer_insert = 0
+        self.thermometer_insert = np.random.normal(self.radius, self.radius/3)
         self.cooking_time += minutes
         with self.out:
             print(f"[{self.cooking_time}m] You cook the {self.meat} for {minutes} minutes...")
 
-    def insert(self, distance):
-        self.thermometer_time = 0
-        self.thermometer_insert += distance 
+  
 
     def serve(self):
+        self.stopping = True
+        goodness, t_time,  over, under, frozen = self.score_food()
         if self.out:
             with self.out:
                 print("You serve the food.")
                 print()
-                if temperature<0:
+                if frozen:
                     print(f"The {self.meat} is still frozen!")
                     print("Guests can't even begin to eat the rock-hard food")
+        
 
                 if self.cooking_time==0:
-                    print(f"The {self.meat} is completely raw!")
+                    print(f"You didn't even cook the {self.meat}!")
                     print("What are you doing?!")
-                    cooked = -10
-                
-                if cooked>0 and cooked<2:
-                    print(f"The {self.meat} is a bit tough")
-                elif  cooked<5 and cooked>=2:
-                    print(f"The {self.meat} is a very tough and chewy")                
-                    print("Guest struggle to finish their food.")
-                elif cooked>=5 and cooked<10:
-                    print(f"The {self.meat} is a horribly overcooked")                
-                    print("Guest push away the unpalatable.")
-                elif cooked>=10:
-                    print(f"The {self.meat} is a burned to a crisp")                
-                    print("Guests are seen picking at the cremated remains.")                    
-                elif cooked<0 and cooked>=-2:
-                    print("The food is rather underdone.")
-                    print(f"Some guests look a little unwell.")
-                elif cooked>=-5 and cooked<-10:
-                    print("The food is undercooked.")
-                    print(f"There is an outbreak of serious illness.")
-                elif cooked<=-10:
-                    print("The food is severely undercooked.")
-                    n_dead = np.random.randint(1, 10)
-                    print(f"{n_dead} guests die of food poisoning")
-
-
-
-        self.stopping = True
+                elif under>0 and over>0:
+                    # check for overcookendess
+                    if over>0 and over<25:
+                        print(f"The {self.meat} is a bit tough")
+                    elif  over<10 and over>=25:
+                        print(f"The {self.meat} is a very tough and chewy")                
+                        print("Guest struggle to finish their food.")
+                    elif over>=25 and over<50:
+                        print(f"The {self.meat} is a very overcooked")                
+                    elif over>=50:
+                        print(f"The {self.meat} is a burned to a crisp")                
+                        print("Guests are seen picking at the cremated remains.")    
+                elif under<0:
+                    # under done
+                    if under<0 and under>=-2:
+                        print("The food is rather underdone.")
+                        print(f"Some guests look a little unwell.")
+                    elif under>=-5 and under<-10:
+                        print("The food is undercooked.")
+                        print(f"There is an outbreak of serious illness.")
+                    elif under<=-10:
+                        print("The food is severely undercooked.")
+                        n_dead = np.random.randint(1, 10)
+                        print(f"{n_dead} guests die of food poisoning")
+                if under>0 and over<0:
+                    print("The food is nicely cooked.")
+                print()
+                print(f"You spent {t_time:.0f} seconds staring at the thermometer.")
+                print(f"Your food scored {100.0*goodness:.1f} points for cookedness.")
+                score = (t_time * -1)  + goodness*500.0
+                print()
+                print(f"Your overall score is {score:.0f}.") 
+                self.score = score
+        
+        return score
 
     def update_loop(self):
         for i in range(20_000):
@@ -154,9 +178,20 @@ class CookingGame:
         
 
     def thermometer(self):
+        # compute the measured temperature
+        food_temp = food_model(self.radius, self.thermometer_insert, self.init_temp, self.oven_temp, self.cooking_time, self.density, self.heat_capacity)
+        noise_level, beta = noise_latency(self.k)
+        self.thermometer_temp = thermometer(food_temp, self.room_temp, self.thermometer_time, noise_level, beta)
+
         if self.therm_label!=None:
-            self.therm_label.value = f"[{self.thermometer_temp}C].\n{self.thermometer_time*60.0:4.0f}s Cooked for {self.cooking_time} mins"
+            if self.thermometer_time == 0.0:
+                temp_label = "[--.-]"
+            else:
+                temp_label = f"[{self.thermometer_temp:.1f}C]"
+
+            self.therm_label.value = f"{temp_label}. Cooked for {self.cooking_time} mins"
             self.thermometer_time += 1/60.0
+            self.total_thermometer_time += 1/60.0
         
 
 
@@ -188,8 +223,9 @@ def plot_chicken_curve(foods):
     ax.set_title("Chicken internal temperature")
 
 def noise_latency(k):
-    noise = np.exp(k/2-1.7)
-    return noise, k**2
+    k = (k**2) /25+ np.cos(k) 
+    noise = np.exp(k/1.8-1.7-np.sin(k*3.1)*0.85) 
+    return noise*10, k**2+0.2
 
     
 def plot_utility_curves(foods):
@@ -203,11 +239,11 @@ def plot_utility_curves(foods):
     ax.set_ylabel("Goodness")
 
 def get_mass(radius, density):
-    return radius ** 2.5 * density
+    return 0.25 * radius ** 3.0 * density
 
 def food_model(radius, insertion_depth, init_temp, cooking_temp, cooking_time, density, heat_capacity):
         mass = get_mass(radius, density)
-        alpha = 1.0/((mass * heat_capacity) * (abs(insertion_depth)+radius/2)+1+np.random.normal(0, 0.001))            
+        alpha = 1.0/((np.sqrt(mass)  * heat_capacity) * (abs(insertion_depth)+radius/2)+1+np.random.normal(0, 0.001))            
         temp = cooking_temp + (init_temp - cooking_temp) * np.exp(-alpha * cooking_time)
         
         temp = np.tanh(temp/120) * 120

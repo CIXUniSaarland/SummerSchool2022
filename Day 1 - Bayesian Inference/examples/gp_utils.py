@@ -67,6 +67,8 @@ def ei(mu, std, xi=0):
 def lcb(y_pred, y_std, kappa=1):
     return y_pred.squeeze() - kappa * y_std.squeeze() + np.random.normal(0, 1e-6, y_pred.shape[0])
 
+def ucb(y_pred, y_std, kappa=1):
+    return y_pred.squeeze() + kappa * y_std.squeeze() + np.random.normal(0, 1e-6, y_pred.shape[0])
 
 from skopt.learning.gaussian_process import GaussianProcessRegressor
 from skopt.learning.gaussian_process.kernels import (
