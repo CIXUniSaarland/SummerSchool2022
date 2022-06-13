@@ -22,7 +22,12 @@
 
 
 Update command
-git subtree pull --prefix .vim/bundle/fireplace https://github.com/tpope/vim-fireplace.git master --squash 
+git checkout main
+
+
+
+
+git subtree pull --prefix "Day 1 - Bayesian Inference" https://github.com/johnhw/cix_2022 main --squash
 
 * Possible practicals:
 * Part I: adjust parameters, make filter work better or worse, incorporate priors

@@ -16,6 +16,11 @@ I recommend having [Anaconda]() pre-installed. To create a clean environment for
 * `pip install -r requirements.txt`
 * `jupyter notebook`
 
+On Windows, `pymc3` sometimes has trouble. Try:
+
+        pip uninstall pymc3
+        conda install pymc3 m2w64-toolchain -c conda-forge
+
 ## Navigating
 
 * [Part I: Overview and admin](i_outline.ipynb)
