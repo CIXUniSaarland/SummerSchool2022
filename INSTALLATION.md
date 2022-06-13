@@ -2,7 +2,7 @@
 
 This document informs you on how to run the Jupyter Notebooks within this repository. We offer two ways to do so. You can either run the projects on your machine or online with Binder.
 
-## How to run the Notebooks on your machine
+## How to install Jupyter Notebook and session material on your machine
 
 1. Download and install Anaconda: https://www.anaconda.com/
 
@@ -18,6 +18,12 @@ Run the following steps from the terminal/shell.
 10. Deactivate environment after installing the requirements: `conda deactivate`
 
 In case you need to remove an environment, run `conda remove --name session1 --all` to remove a ipykernel run `jupyter kernelspec uninstall session1`.
+
+# How to run the Notebooks locally
+
+1. Change the directory to fit the session, e.g. for session1: `cd "Day 1 - Bayesian Inference"`
+2. From the terminal/shell run `jupyter notebook`
+3. Jupyter Notebook will start and a browser window will open. The browser likely shows an error since it cannot open the local file. Instead check the URLs in the terminal and open the one that starts with: http://localhost:8888/?token=...`
 
 ## How to run the Notebooks with Binder
 
