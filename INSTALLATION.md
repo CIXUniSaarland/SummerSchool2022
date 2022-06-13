@@ -33,6 +33,8 @@ In case you need to remove an environment, run `conda remove --name session1 --a
 2. Paste the repository's name `https://github.com/CIXUniSaarland/SummerSchool2022`  into the form field *GitHub repository name or URL* and the corresponding session branch into the field ` Git ref (branch, tag, or commit)`, e.g. `session1`. An overview of all branches can be found here: `https://github.com/CIXUniSaarland/SummerSchool2022/branches`
 3. Launch the instance
 
+**Note: Download your notebook files from Binder since they will not be persisted. Files get lost, for example, if you idle too long, since the Binder instance will shut down.**
+
 ## Install C++ dependencies (for Session 5 Part 2):
 
 1. Install CMake: https://cmake.org/install/
