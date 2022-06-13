@@ -19,7 +19,7 @@ Run the following steps from the terminal/shell.
 
 In case you need to remove an environment, run `conda remove --name session1 --all` to remove a ipykernel run `jupyter kernelspec uninstall session1`.
 
-# How to run the Notebooks locally
+## How to run the Notebooks locally
 
 1. Change the directory to fit the session, e.g. for session1: `cd "Day 1 - Bayesian Inference"`
 2. From the terminal/shell run `jupyter notebook`
