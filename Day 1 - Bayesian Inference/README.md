@@ -21,4 +21,3 @@ I recommend having [Anaconda]() pre-installed. To create a clean environment for
 * [Part I: Overview and admin](i_outline.ipynb)
 * [Part II: Theory and practice](ii_theory_and_practice.ipynb)
 * [Part III: Bayesian HCI](iii_bayesian_hci.ipynb)
-* [Part V: Practical exercise](v_practical_task.ipynb)
