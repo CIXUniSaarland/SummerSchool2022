@@ -8,7 +8,7 @@ The topics and speakers are as follows:
 - Bayesian Inference by [John Williamson](https://www.johnhw.com/)
 - Deep Learning by [Luis Leiva](https://luis.leiva.name/) and [Bereket Yilma](https://bekyilma.github.io/)
 - Computational Rationality by [Andrew Howes](https://www.cs.bham.ac.uk/~howesa/)
-- Interactive and Explainable AI by [Nikolai Banovic](http://www.nikolabanovic.net/)
+- Interactive and Explainable AI by [Nikola Banovic](http://www.nikolabanovic.net/)
 - Bayesian Optimization by [Antti Oulasvirta](https://userinterfaces.aalto.fi/)
 - Geometric Optimization by [Alexandra Ion](https://interactive-structures.org/)
 
