@@ -10,3 +10,4 @@ plotly==5.8.0
 seaborn==0.11.2
 scikit_learn==1.1.1
 umap_learn==0.5.3
+ipykernel
