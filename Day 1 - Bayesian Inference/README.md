@@ -26,4 +26,3 @@ On Windows, `pymc3` sometimes has trouble. Try:
 * [Part I: Overview and admin](i_outline.ipynb)
 * [Part II: Theory and practice](ii_theory_and_practice.ipynb)
 * [Part III: Bayesian HCI](iii_bayesian_hci.ipynb)
-* [Part V: Practical exercise](v_practical_task.ipynb)

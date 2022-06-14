@@ -1,0 +1,6 @@
+numpy
+scipy
+matplotlib
+torch
+nltk
+pytorch_pretrained_biggan
