@@ -1,0 +1,19 @@
+food,like,dislike,fruit
+chicken, 8002, 681, 0
+licorice, 42, 180, 0
+apples, 1921, 202, 1
+octopus, 684, 409, 0
+dragonfruit, 19, 2, 1
+olives, 291, 409, 0
+amaranth, 1, 0, 0
+cabbage, 3191, 1303, 0
+pigeon, 14, 2, 0
+lutefisk, 1, 4, 0
+haggis, 19, 7, 0
+marmite, 50, 50, 0
+bananas, 1728, 92, 1
+tofu, 199, 120, 0 
+cheese, 9234, 4900, 0
+sea urchin,0,1, 0
+gooseberry,1,0, 1
+mutton,13,41,0

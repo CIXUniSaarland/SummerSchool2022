@@ -1,10 +1,12 @@
+pre-commit
+rich
 numpy
 scipy
 matplotlib
-scikit-learn
 scikit-optimize
-scikit-image
-ipywidgets
 pfilter
 pymc3
-pandas
+arviz
+ipywidgets
+ipycanvas
+seaborn
