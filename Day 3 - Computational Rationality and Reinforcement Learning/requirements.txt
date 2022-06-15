@@ -3,3 +3,4 @@ gym
 matplotlib
 numpy
 scipy
+ipykernel
