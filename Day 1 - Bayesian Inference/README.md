@@ -4,11 +4,10 @@ John H. Williamson, University of Glasgow
 
 These notes are released under an MIT license.
 
-All notes are available as a Jupyter notebook. You can also view these notes [live on MyBinder]() if you do not wish to run locally.
-
+All notes are available as a Jupyter notebook. 
 ## Installing
 
-I recommend having [Anaconda]() pre-installed. To create a clean environment for these notes (my recommended approach):
+I recommend having [Anaconda](https://www.anaconda.com/products/distribution) pre-installed. To create a clean environment for these notes (my recommended approach):
 
 * `conda create -n cix_2022_jhw`
 * `conda activate cix_2022_jhw`
