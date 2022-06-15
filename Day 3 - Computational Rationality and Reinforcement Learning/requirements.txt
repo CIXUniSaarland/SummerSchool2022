@@ -4,4 +4,3 @@ ipython
 matplotlib
 numpy
 scipy
-gazetools
