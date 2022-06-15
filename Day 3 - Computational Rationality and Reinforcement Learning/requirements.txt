@@ -1,0 +1,6 @@
+stable_baselines3
+gym
+matplotlib
+numpy
+scipy
+ipykernel
