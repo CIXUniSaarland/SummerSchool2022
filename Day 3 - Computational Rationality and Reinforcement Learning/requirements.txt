@@ -1,6 +1,5 @@
 stable_baselines3
 gym
-ipython
 matplotlib
 numpy
 scipy
