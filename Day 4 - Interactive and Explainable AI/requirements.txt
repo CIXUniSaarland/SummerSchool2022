@@ -6,4 +6,4 @@ nltk
 pytorch_pretrained_biggan
 ipykernel
 ipywidgets
-pySequentialLineSearch
+git+https://github.com/yuki-koyama/sequential-line-search
