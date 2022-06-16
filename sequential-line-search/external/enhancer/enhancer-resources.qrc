@@ -1,0 +1,8 @@
+<!DOCTYPE RCC>
+<RCC>
+  <qresource prefix="/">
+    <file>test-images/DSC03039.JPG</file>
+    <file>shaders/enhancer.fs</file>
+    <file>shaders/enhancer.vs</file>
+  </qresource>
+</RCC>
