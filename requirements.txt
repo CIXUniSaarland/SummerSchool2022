@@ -5,3 +5,4 @@ torch
 nltk
 pytorch_pretrained_biggan
 ipykernel
+ipywidgets
