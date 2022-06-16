@@ -1,0 +1,27 @@
+[submodule "external/tinycolormap"]
+	path = external/tinycolormap
+	url = https://github.com/yuki-koyama/tinycolormap.git
+[submodule "external/timer"]
+	path = external/timer
+	url = https://github.com/yuki-koyama/timer.git
+[submodule "external/nlopt"]
+	path = external/nlopt
+	url = https://github.com/stevengj/nlopt.git
+[submodule "external/enhancer"]
+	path = external/enhancer
+	url = https://github.com/yuki-koyama/enhancer
+[submodule "external/parallel-util"]
+	path = external/parallel-util
+	url = https://github.com/yuki-koyama/parallel-util
+[submodule "external/nlopt-util"]
+	path = external/nlopt-util
+	url = https://github.com/yuki-koyama/nlopt-util.git
+[submodule "external/pybind11"]
+	path = external/pybind11
+	url = https://github.com/pybind/pybind11
+[submodule "external/mathtoolbox"]
+	path = external/mathtoolbox
+	url = https://github.com/yuki-koyama/mathtoolbox.git
+[submodule "external/rand-util"]
+	path = external/rand-util
+	url = https://github.com/yuki-koyama/rand-util.git

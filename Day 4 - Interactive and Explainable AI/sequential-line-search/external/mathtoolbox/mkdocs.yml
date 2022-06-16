@@ -1,0 +1,34 @@
+site_name: mathtoolbox
+theme: readthedocs
+markdown_extensions:
+  - mdx_math:
+      enable_dollar_delimiter: true
+extra_javascript:
+  - https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+google_analytics: ['UA-118875313-1', 'yuki-koyama.github.io']
+nav:
+  - 'Introduction': 'index.md'
+  - 'Scattered Data Interpolation and Function Approximation':
+    - 'rbf-interpolation.md'
+    - 'gaussian-process-regression.md'
+  - 'Dimensionality Reduction and Low-Dimensional Embedding':
+    - 'classical-mds.md'
+    - 'som.md'
+  - 'Numerical Optimization':
+    - 'backtracking-line-search.md'
+    - 'bayesian-optimization.md'
+    - 'bfgs.md'
+    - 'gradient-descent.md'
+    - 'l-bfgs.md'
+    - 'strong-wolfe-conditions-line-search.md'
+  - 'Linear Algebra':
+    - 'log-determinant.md'
+    - 'matrix-inversion.md'
+  - 'Utilities':
+    - 'acquisition-functions.md'
+    - 'constants.md'
+    - 'data-normalization.md'
+    - 'kernel-functions.md'
+    - 'probability-distributions.md'
+repo_name: GitHub
+repo_url: https://github.com/yuki-koyama/mathtoolbox/

@@ -1,0 +1,2 @@
+pybind11_add_module(pySequentialLineSearch pySequentialLineSearch.cpp)
+target_link_libraries(pySequentialLineSearch PRIVATE SequentialLineSearch pybind11::module)

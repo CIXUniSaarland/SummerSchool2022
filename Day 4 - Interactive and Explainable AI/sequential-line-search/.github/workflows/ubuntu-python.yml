@@ -1,0 +1,37 @@
+name: Ubuntu-python
+
+on: [push]
+
+jobs:
+  build-test:
+
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-16.04, ubuntu-18.04]
+        python-version: [ '3.6', '3.7', '3.8' ]
+
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-python@v1
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: install-build-dependencies
+      run: sudo apt-get install libeigen3-dev
+    - name: submodule
+      run: git submodule update --init --recursive
+    - name: pip-install-pySequentialLineSearch
+      run: pip install ./
+    - name: install-test-dependencies
+      run: |
+        pip install joblib matplotlib seaborn scipy
+        sudo apt-get install -y fonts-linuxlibertine
+        sudo apt-get --no-install-recommends install -y texlive-latex-extra texlive-fonts-extra dvipng
+    - name: test
+      run: |
+        python ./python-examples/acquisition-func-comparison.py
+        python ./python-examples/simple.py
+        python ./python-examples/custom-initial-slider.py
+        python ./python-examples/map-vs-fixed-hyperparams.py
+        python ./python-examples/kernel-comparison.py
